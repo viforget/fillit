@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 22:51:20 by viforget          #+#    #+#             */
-/*   Updated: 2018/12/06 17:08:32 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:53:32 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ char				*ft_strjoindel(char *s1, char const *s2);
 char				*ft_strnjoin(char const *s1, char const *s2, size_t n);
 char				*ft_strnjoindel(char *s1, char const *s2, size_t n);
 int					get_next_line(const int fd, char **line);
-
+void				ft_lstadde(t_list **alst, t_list *new);
 #endif

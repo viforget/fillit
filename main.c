@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 23:59:05 by viforget          #+#    #+#             */
-/*   Updated: 2018/12/18 04:59:54 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:58:17 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,33 @@ char	**tabnew(size_t x, size_t y)
 int		main(int argc, char **argv)
 {
 	t_list	*tetris;
+	t_list	*tetro;
 	t_list	*list;
 	char	*str;
 	int		fd;
 	int		nb;
 	char	**tab;
 
-	nb = 4;
+	nb = 1;
 	if (argc >= 2)
 	{
 		fd = open(argv[1], O_RDONLY);
 		tab = tabnew(4, 4);
-		list = tetris;
-		while(nb == 4)
+		list = NULL;
+		while(nb == 1)
 		{
-			nb = ft_filltab(fd, tab, 4);
-			tetris->next = ft_lstnew(tab, sizeof(char *) * 4);
-			tetris = tetris->next;
+			nb = ft_filltab(fd, tab, 4); //On remplit tab par un tetromino
+			//ft_putnbr(nb);
+
+			tetro = ft_lstnew(tab, sizeof(char *) * 4); //tab est inscrit dans un maillon de la chaine
+			if(!list)
+				list = tetro;
+			//ft_puttab(list->content, 4);
+			ft_lstadde(&tetris, tetro);
+			//ft_puttab(tetris->content, 4);
 		}
-		tetris = tetris->next;
-		ft_puttab(tetris->content, 4);
+		p();
+		list = list->next;
+		ft_puttab(list->content, 4);
 	}
 }

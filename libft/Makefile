@@ -6,7 +6,7 @@
 #    By: viforget <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/15 20:55:26 by viforget          #+#    #+#              #
-#    Updated: 2018/12/06 17:17:15 by viforget         ###   ########.fr        #
+#    Updated: 2019/01/07 20:55:31 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRC = ft_atoi.c\
 	ft_strnjoin.c\
 	ft_strnjoindel.c\
 	get_next_line.c\
+	ft_lstadde.c\
 
 OBJ = ft_atoi.o\
 	ft_memcmp.o\
@@ -147,6 +148,7 @@ OBJ = ft_atoi.o\
 	ft_strnjoin.o\
 	ft_strnjoindel.o\
 	get_next_line.o\
+	ft_lstadde.o\
 
 all : $(NAME)
 
