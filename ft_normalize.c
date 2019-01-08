@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 22:45:40 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/08 18:47:26 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/08 19:51:49 by medenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int		ft_chk(char **tab)
 	int i;
 
 	i = 0;
-	while(i < 4)
+	while (i < 4)
 	{
-		if(tab[i][0] != '.')
-			return(1);
+		if (tab[i][0] != '.')
+			return (1);
 		i++;
 	}
 	return (0);
@@ -49,7 +49,7 @@ char	**ft_left(char **tab)
 
 	i = 0;
 	nb = 1;
-	while(nb)
+	while (nb)
 	{
 		if (ft_chk(tab) == 0)
 		{
@@ -66,7 +66,6 @@ char	**ft_left(char **tab)
 	}
 	ft_puttab(tab, 4);
 	return (tab);
-
 }
 
 char	**ft_up(char **tab)
@@ -76,7 +75,7 @@ char	**ft_up(char **tab)
 
 	i = 0;
 	nb = 1;
-	while(nb)
+	while (nb)
 	{
 		if (ft_strcmp(tab[0], "....") == 0)
 		{
@@ -91,13 +90,12 @@ char	**ft_up(char **tab)
 			nb = 0;
 		}
 	}
-	//ft_puttab(tab, 4);
 	return (tab);
 }
 
 t_list	*ft_normalize(t_list *tetris)
 {
-	while(tetris->next)
+	while (tetris->next)
 	{
 		ft_up(tetris->content);
 		ft_left(tetris->content);

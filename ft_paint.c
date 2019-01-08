@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_paint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: medenis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/08 18:20:27 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/08 18:22:04 by viforget         ###   ########.fr       */
+/*   Created: 2019/01/08 19:49:05 by medenis           #+#    #+#             */
+/*   Updated: 2019/01/08 19:49:25 by medenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int    ft_paint(char **str)
+int		ft_paint(char **str)
 {
-	int         i;
-	static char     c = 'A';
+	int				i;
+	static char		c = 'A';
 
 	i = 0;
 	if (c > 'Z')
@@ -25,10 +25,10 @@ int    ft_paint(char **str)
 	}
 	while (i < 16)
 	{
-		if (str[i/4][i%4] == '#')
-			str[i/4][i%4] = c;
+		if (str[i / 4][i % 4] == '#')
+			str[i / 4][i % 4] = c;
 		i++;
 	}
 	c++;
-	return(1);
+	return (1);
 }

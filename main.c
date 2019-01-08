@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 23:59:05 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/08 19:36:40 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/08 19:53:00 by medenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	p(void)
 
 int		ft_filltab(int fd, char **tab, size_t n)
 {
-	size_t i;
+	size_t	i;
 	int		nb;
 	char	*trash;
 
@@ -53,7 +53,7 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		nb;
 	char	**tab;
-	int a = 15;
+	int		a = 15;
 
 	nb = 1;
 	if (argc >= 2)
@@ -61,7 +61,7 @@ int		main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		tab = tabnew(4);
 		tetris = NULL;
-		while(nb == 1)
+		while (nb == 1)
 		{
 			nb = ft_filltab(fd, tab, 4);
 
