@@ -6,7 +6,7 @@
 /*   By: medenis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 19:49:05 by medenis           #+#    #+#             */
-/*   Updated: 2019/01/08 19:49:25 by medenis          ###   ########.fr       */
+/*   Updated: 2019/01/08 20:08:17 by medenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,17 @@ int		ft_paint(char **str)
 	}
 	c++;
 	return (1);
+}
+
+int		ft_painting(t_list *lst)
+{
+	int		error;
+
+	i = 0;
+	while (lst->next)
+	{
+		error = ft_paint(lst->content);
+		lst = lst->next;
+	}
+	return (error);
 }
