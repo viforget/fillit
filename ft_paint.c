@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_paint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/03 23:50:22 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/08 18:22:32 by viforget         ###   ########.fr       */
+/*   Created: 2019/01/08 18:20:27 by viforget          #+#    #+#             */
+/*   Updated: 2019/01/08 18:22:04 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "fillit.h"
 
-#include <fcntl.h>
-#include "libft/libft.h"
+int    ft_paint(char **str)
+{
+	int         i;
+	static char     c = 'A';
 
-t_list	*ft_normalize(t_list *tetris);
-int		ft_paint(char **str);
-#endif
+	i = 0;
+	if (c > 'Z')
+	{
+		ft_putstr("error\n");
+		return (-1);
+	}
+	while (i < 16)
+	{
+		if (str[i/4][i%4] == '#')
+			str[i/4][i%4] = c;
+		i++;
+	}
+	c++;
+	return(1);
+}
