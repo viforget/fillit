@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 23:50:22 by viforget          #+#    #+#             */
-/*   Updated: 2018/12/06 20:41:35 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/07 23:16:02 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 #include <fcntl.h>
 #include "libft/libft.h"
 
+t_list	*ft_normalize(t_list *tetris);
 
 #endif
