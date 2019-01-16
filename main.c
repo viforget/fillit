@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 23:59:05 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/08 19:53:00 by medenis          ###   ########.fr       */
+/*   Updated: 2019/01/16 17:18:18 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		nb;
 	char	**tab;
-	int		a = 15;
+	int		a = 12;
 
 	nb = 1;
 	if (argc >= 2)
@@ -69,6 +69,7 @@ int		main(int argc, char **argv)
 			ft_lstadde(&tetris, tetro);
 		}
 		ft_normalize(tetris);
+		ft_painting(tetris);
 		while (a--)
 		{
 			//ft_putchar('\n');

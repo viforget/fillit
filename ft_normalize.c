@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 22:45:40 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/08 19:51:49 by medenis          ###   ########.fr       */
+/*   Updated: 2019/01/16 17:17:55 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ char	**ft_left(char **tab)
 				ft_shift(tab[i]);
 				i++;
 			}
+			i = 0;
 		}
 		else
 		{
 			nb = 0;
 		}
 	}
-	ft_puttab(tab, 4);
 	return (tab);
 }
 
