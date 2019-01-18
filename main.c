@@ -6,20 +6,11 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 23:59:05 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/16 17:18:18 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/18 18:54:59 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void	p(void)
-{
-	static int n = 'A';
-
-	ft_putchar(n);
-	ft_putchar('\n');
-	n++;
-}
 
 int		ft_filltab(int fd, char **tab, size_t n)
 {
@@ -34,6 +25,8 @@ int		ft_filltab(int fd, char **tab, size_t n)
 		i++;
 	}
 	get_next_line(fd, &trash);
+	if (trash[0])
+		return (-1);
 	return (nb);
 }
 
@@ -53,7 +46,6 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		nb;
 	char	**tab;
-	int		a = 12;
 
 	nb = 1;
 	if (argc >= 2)
@@ -64,22 +56,23 @@ int		main(int argc, char **argv)
 		while (nb == 1)
 		{
 			nb = ft_filltab(fd, tab, 4);
-
+			if (nb == -1)
+				return (0);
 			tetro = ft_lstnew(tab, sizeof(char *) * 4);
 			ft_lstadde(&tetris, tetro);
 		}
 		ft_normalize(tetris);
-		ft_painting(tetris);
-		while (a--)
+		if (ft_painting(tetris) == -1)
 		{
-			//ft_putchar('\n');
-			//a = ft_paint(tetris->content);
+			ft_putstr("error\n");
+			return (0);
+		}
+		//ft_putnbr(ft_painting(tetris));
+		while (tetris->next)
+		{
 			ft_puttab(tetris->content, 4);
+			ft_putchar('\n');
 			tetris = tetris->next;
 		}
-		//ft_putchar('\n');
-		//tetris = tetris->next;
-		//ft_puttab(tetris->content, 4);
-		//ft_putchar('\n');
 	}
 }
