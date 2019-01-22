@@ -1,22 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/03 23:50:22 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/18 19:04:10 by viforget         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FILLIT_H
 # define FILLIT_H
 
 # include <fcntl.h>
 # include "libft/libft.h"
 
-t_list	*ft_normalize(t_list *tetris);
-int		ft_painting(t_list *tetris);
-int		ft_checkerror(char **tab, int x, int y, char c);
+typedef struct	s_square
+{
+	int			size;
+	char		**array;
+} t_square;
+
+typedef struct s_tetro
+{
+	char	**tetro;
+	int		h;
+    int		l;
+} t_tetro;
+
+t_list		*ft_normalize(t_list *tetris);
+int			ft_painting(t_list *lst);
+t_square	*resolve(t_list *list);
+int			ft_checkerror(char **tab, int x, int y, char c);
+char		**tabnew(size_t x);
+char		**ft_algo(t_list *tetris);
 #endif
