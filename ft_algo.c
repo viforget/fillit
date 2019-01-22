@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 02:24:17 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/22 04:54:20 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/22 18:04:09 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ char	**ft_tabcopy(char **tab, size_t i)
 	int		j;
 
 	j = 0;
-	if (!(tab2(char **)ft_memalloc(sizeof(char) * i)))
-		return (NULL);
+	tab2 = tabnew(i);
 	while(j < i)
 	{
 		if (!(tab2[j] = ft_strdup(tab[j])))
@@ -74,7 +73,7 @@ char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 {
 	char	**tab;
-	char	**
+	char	**tab2;
 	size_t		i;
 
 	i = 0;
