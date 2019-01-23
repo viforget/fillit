@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 02:24:17 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/22 18:04:09 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/23 19:55:35 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	**ft_tabcopy(char **tab, size_t i)
 	char	**tab2;
 	int		j;
 
+	if (tab == NULL)
+		return (NULL);
 	j = 0;
 	tab2 = tabnew(i);
 	while(j < i)
@@ -50,23 +52,26 @@ char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 	int		i;
 	char	**bsquare;
 
-	bsquare = bsqa;
+	bsquare = ft_tabcopy(bsqa, p);
 	i = 0;
-	while (i < p * (p - 1))
+	while (i <= 12 && i <= (p * (p - 1)))
 	{
-		if (tetro[i / p][i % p] != '.')
+		if (tetro[i / 4][i % 4] != '.')
 		{
-			if (bsquare[i / 4 + d / p][i % 4 + d % 4] && 
-					bsquare[i / 4 + d / p][i % 4 + d % 4] == '.')
-				bsquare[i / 4 + d / p][i % 4 + d % 4] = tetro[i / p][i % p];
+			if (((i / 4 + d / p) < p) && ((i % 4 + d % p) < p) &&
+					bsquare[i / 4 + d / p][i % 4 + d % p] == '.')
+			{
+				bsquare[i / 4 + d / p][i % 4 + d % 4] = tetro[i / 4][i % 4];
+			}
 			else
 			{
-				ft_putnbr(i);
 				return (NULL);
 			}
 		}
 		i++;
 	}
+	//ft_puttab(bsquare, p);
+	//ft_putchar('\n');
 	return (bsquare);
 }
 
@@ -80,13 +85,24 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 	tab = NULL;
 	while (i <= 12)
 	{
-		
+		tab2 = ft_tabcopy(tab, piece);
 		tab = ft_try(bsquare, tetris->content, tetris->content_size, i, piece);
 		i++;
-		if (tab && tetris->next)
+		if (tab == NULL)
+		{
+			//penser a creer ft_tabdel
+			tab = ft_tabcopy(tab2, piece);
+		}
+		else if (tetris->next)
+		{
 			tab = ft_algor(tab, tetris->next, piece);
+		}
+		if (tab)
+		{
+			return (tab);
+		}
 	}
-	return (tab);
+	return (NULL);
 }
 
 char	**ft_algo(t_list *tetris)
@@ -95,10 +111,15 @@ char	**ft_algo(t_list *tetris)
 	char	**tab;
 
 	tab = NULL;
-	i = 0;
-	while (1)
+	i = 4;
+	while (!tab)
 	{
-		ft_algor(ft_gensquare(i), tetris, i);
+		tab = ft_algor(ft_gensquare(i), tetris, i);
+		/*ft_putnbr(i);
+		ft_putchar('\n');
+		ft_puttab(tab, i);
+		ft_putchar('\n');*/
 		i++;
 	}
+	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: medenis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 19:49:05 by medenis           #+#    #+#             */
-/*   Updated: 2019/01/18 19:04:14 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/23 19:09:16 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_painting(t_list *lst)
 	int		error;
 
 	error = 0;
-	while (lst->next && error >= 0)
+	while (lst && error >= 0)
 	{
 		error = ft_paint(lst->content);
 		lst = lst->next;
