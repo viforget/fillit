@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 02:24:17 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/23 19:55:35 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/25 15:19:40 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 			if (((i / 4 + d / p) < p) && ((i % 4 + d % p) < p) &&
 					bsquare[i / 4 + d / p][i % 4 + d % p] == '.')
 			{
-				bsquare[i / 4 + d / p][i % 4 + d % 4] = tetro[i / 4][i % 4];
+				bsquare[i / 4 + d / p][i % 4 + d % p] = tetro[i / 4][i % 4];
 			}
 			else
 			{
@@ -70,8 +70,6 @@ char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 		}
 		i++;
 	}
-	//ft_puttab(bsquare, p);
-	//ft_putchar('\n');
 	return (bsquare);
 }
 
@@ -83,7 +81,7 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 
 	i = 0;
 	tab = NULL;
-	while (i <= 12)
+	while (i <= piece * (piece - 1))
 	{
 		tab2 = ft_tabcopy(tab, piece);
 		tab = ft_try(bsquare, tetris->content, tetris->content_size, i, piece);
@@ -115,10 +113,6 @@ char	**ft_algo(t_list *tetris)
 	while (!tab)
 	{
 		tab = ft_algor(ft_gensquare(i), tetris, i);
-		/*ft_putnbr(i);
-		ft_putchar('\n');
-		ft_puttab(tab, i);
-		ft_putchar('\n');*/
 		i++;
 	}
 	return (tab);
