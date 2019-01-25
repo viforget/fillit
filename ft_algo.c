@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 02:24:17 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/25 15:19:40 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/25 16:30:25 by medenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**ft_gensquare(i)
 char	**ft_tabcopy(char **tab, size_t i)
 {
 	char	**tab2;
-	int		j;
+	size_t		j;
 
 	if (tab == NULL)
 		return (NULL);
@@ -47,9 +47,9 @@ char	**ft_tabcopy(char **tab, size_t i)
 	return (tab2);
 }
 
-char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
+char	**ft_try(char **bsqa, char **tetro, int d, size_t p)
 {
-	int		i;
+	size_t		i;
 	char	**bsquare;
 
 	bsquare = ft_tabcopy(bsqa, p);
@@ -84,7 +84,7 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 	while (i <= piece * (piece - 1))
 	{
 		tab2 = ft_tabcopy(tab, piece);
-		tab = ft_try(bsquare, tetris->content, tetris->content_size, i, piece);
+		tab = ft_try(bsquare, tetris->content, i, piece);
 		i++;
 		if (tab == NULL)
 		{

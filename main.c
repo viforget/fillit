@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 23:59:05 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/23 19:43:19 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/25 16:33:53 by medenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_filltab(int fd, char **tab, size_t n)
 char	**tabnew(size_t x)
 {
 	char	**tab;
-	
+
 	if (!(tab = (char **)malloc(sizeof(char *) * x)))
 		return (NULL);
 	return (tab);
@@ -71,15 +71,7 @@ int		main(int argc, char **argv)
 			return (0);
 		}
 		tetro = tetris;
-		char **tet;
-		tet = ft_algo(tetris);
-		ft_puttab(tet, ft_strlen(tet[0]));
-		/*while (tetro->next)
-		{
-			ft_puttab(tetro->content, 4);
-			ft_putchar('\n');
-			tetro = tetro->next;
-		}*/
-
+		tab = ft_algo(tetris);
+		ft_puttab(tab, ft_strlen(tab[0]));
 	}
 }
