@@ -6,7 +6,7 @@
 #    By: viforget <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/15 20:55:26 by viforget          #+#    #+#              #
-#    Updated: 2019/01/07 20:55:31 by viforget         ###   ########.fr        #
+#    Updated: 2019/02/03 18:50:50 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,15 +155,15 @@ all : $(NAME)
 $(NAME) :
 	@gcc -Wall -Wextra -Werror -c $(SRC)
 	@ar rc $(NAME) $(OBJ)
-	@echo "\033[32mCOMPILATION OK\033[0m"
+	@echo "\033[32mCOMPILATION LIBFT OK\033[0m"
 
 clean :
 	@/bin/rm -f $(OBJ)
-	@echo "\033[36mCLEAN OK\033[0m"
+	@echo "\033[36mCLEAN LIBFT OK\033[0m"
 
 fclean :
 	@/bin/rm -f $(OBJ) $(NAME)
-	@echo "\033[36mFCLEAN OK\033[0m"
+	@echo "\033[36mFCLEAN LIBFT OK\033[0m"
 
 re : fclean all
 

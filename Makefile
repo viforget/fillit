@@ -6,33 +6,39 @@
 #    By: medenis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 18:28:47 by medenis           #+#    #+#              #
-#    Updated: 2019/01/08 19:41:20 by medenis          ###   ########.fr        #
+#    Updated: 2019/02/04 22:25:26 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 SRC = ft_normalize.c\
-	  	main.c\
+		main.c\
 		ft_paint.c\
-		libft/libft.a\
+		ft_checkerror.c\
+		ft_algo.c\
 
-OBJ = 
+OBJ = $(SRC:.c=.o)
+
+FLAG = -Wall -Wextra -Werror
 
 all : $(NAME)
 
 $(NAME) :
-		@gcc -Wall -Wextra -Werror -c $(SRC)
 		@make -C libft/ all clean
-		@echo "\033[32mCOMPILATION OK\033[0m"
+		@gcc -c $(SRC)
+		@gcc -o $(NAME) $(OBJ) libft/libft.a
+		@echo "\033[32mCOMPILATION FILLIT OK\033[0m"
 
 clean :
-		/bin/rm -f $(OBJ)
-		@echo "\033[36mCLEAN OK\033[0m"
+		@/bin/rm -f $(OBJ)
+		@make -C libft/ fclean
+		@echo "\033[36mCLEAN FILLIT OK\033[0m"
 
 fclean :
-		/bin/rm -f $(OBJ) $(NAME)
-		@echo "\033[36mCLEAN OK\033[0m"
+		@/bin/rm -f $(OBJ) $(NAME)
+		@make -C libft/ fclean
+		@echo "\033[36mCLEAN FILLIT OK\033[0m"
 
 re : fclean all
 

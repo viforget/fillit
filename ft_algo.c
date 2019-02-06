@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 02:24:17 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/25 15:19:40 by viforget         ###   ########.fr       */
+/*   Updated: 2019/02/04 22:39:37 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@ char	**ft_tabcopy(char **tab, size_t i)
 	return (tab2);
 }
 
+void	ft_tabdel(char **tab, size_t j)
+{
+	size_t i;
+
+	i = 0;
+	if (tab != NULL)
+	{
+		while(i < j)
+		{
+			ft_strdel(&tab[i]);
+			//free(&tab[i]);
+			i++;
+		}
+		free(tab);
+	}
+}
+
 char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 {
 	int		i;
@@ -54,7 +71,7 @@ char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 
 	bsquare = ft_tabcopy(bsqa, p);
 	i = 0;
-	while (i <= 12 && i <= (p * (p - 1)))
+	while (i <= 12)
 	{
 		if (tetro[i / 4][i % 4] != '.')
 		{
@@ -65,6 +82,7 @@ char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 			}
 			else
 			{
+				ft_tabdel(bsquare, p);
 				return (NULL);
 			}
 		}
@@ -81,14 +99,15 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 
 	i = 0;
 	tab = NULL;
+	tab2 = NULL;
 	while (i <= piece * (piece - 1))
 	{
-		tab2 = ft_tabcopy(tab, piece);
+		tab2 = tab;
+		ft_tabdel(tab, piece);
 		tab = ft_try(bsquare, tetris->content, tetris->content_size, i, piece);
 		i++;
 		if (tab == NULL)
 		{
-			//penser a creer ft_tabdel
 			tab = ft_tabcopy(tab2, piece);
 		}
 		else if (tetris->next)
@@ -100,6 +119,7 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 			return (tab);
 		}
 	}
+	ft_tabdel(tab, piece);
 	return (NULL);
 }
 
@@ -109,7 +129,7 @@ char	**ft_algo(t_list *tetris)
 	char	**tab;
 
 	tab = NULL;
-	i = 4;
+	i = 2;
 	while (!tab)
 	{
 		tab = ft_algor(ft_gensquare(i), tetris, i);
