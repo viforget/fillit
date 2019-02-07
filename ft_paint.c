@@ -6,7 +6,7 @@
 /*   By: medenis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 19:49:05 by medenis           #+#    #+#             */
-/*   Updated: 2019/01/23 19:09:16 by viforget         ###   ########.fr       */
+/*   Updated: 2019/01/25 16:28:48 by medenis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@ int		ft_paint(char **str)
 	int				count;
 	int				ct;
 
-
 	ct = 0;
 	count = 0;
 	i = 0;
-	if (c > 'Z')
-		return (-1);
 	while (i < 16)
 	{
 		if (str[i / 4][i % 4] != '#' && str[i / 4][i % 4] != '.')
@@ -37,9 +34,9 @@ int		ft_paint(char **str)
 		}
 		i++;
 	}
-	c++;
-	if (count != 4 || i != 16 || (ct != 6 && ct != 8))
+	if (count != 4 || i != 16 || (ct != 6 && ct != 8) || c > 'Z')
 		return (-1);
+	c++;
 	return (1);
 }
 

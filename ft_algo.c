@@ -6,7 +6,11 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 02:24:17 by viforget          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/07 23:18:36 by viforget         ###   ########.fr       */
+=======
+/*   Updated: 2019/01/25 16:30:25 by medenis          ###   ########.fr       */
+>>>>>>> d6b630213ee642c536d6e367c5145b6d95502ba9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +36,7 @@ char	**ft_gensquare(i)
 char	**ft_tabcopy(char **tab, size_t i)
 {
 	char	**tab2;
-	int		j;
+	size_t		j;
 
 	if (tab == NULL)
 		return (NULL);
@@ -47,6 +51,7 @@ char	**ft_tabcopy(char **tab, size_t i)
 	return (tab2);
 }
 
+<<<<<<< HEAD
 void	ft_tabdel(char **tab, size_t j)
 {
 	size_t i;
@@ -65,8 +70,11 @@ void	ft_tabdel(char **tab, size_t j)
 }
 /*
 char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
+=======
+char	**ft_try(char **bsqa, char **tetro, int d, size_t p)
+>>>>>>> d6b630213ee642c536d6e367c5145b6d95502ba9
 {
-	int		i;
+	size_t		i;
 	char	**bsquare;
 
 	bsquare = ft_tabcopy(bsqa, p);
@@ -102,9 +110,14 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 	tab2 = NULL;
 	while (i <= piece * (piece - 1))
 	{
+<<<<<<< HEAD
 		tab2 = tab;
 		ft_tabdel(tab, piece);
 		tab = ft_try(bsquare, tetris->content, tetris->content_size, i, piece);
+=======
+		tab2 = ft_tabcopy(tab, piece);
+		tab = ft_try(bsquare, tetris->content, i, piece);
+>>>>>>> d6b630213ee642c536d6e367c5145b6d95502ba9
 		i++;
 		if (tab == NULL)
 		{
