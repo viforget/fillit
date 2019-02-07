@@ -17,10 +17,10 @@ typedef struct s_tetro
     int		l;
 } t_tetro;
 
-t_list		*ft_normalize(t_list *tetris);
+int			ft_normalize(t_list *tetris);
 int			ft_painting(t_list *lst);
 t_square	*resolve(t_list *list);
 int			ft_checkerror(char **tab, int x, int y, char c);
 char		**tabnew(size_t x);
-char		**ft_algo(t_list *tetris);
+char		**ft_algo(t_list *tetris, int p);
 #endif

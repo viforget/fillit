@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 02:24:17 by viforget          #+#    #+#             */
-/*   Updated: 2019/02/04 22:39:37 by viforget         ###   ########.fr       */
+/*   Updated: 2019/02/07 23:18:36 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**ft_gensquare(i)
 	while(x)
 	{
 		x--;
-		if (!(tab[x] = (char *)ft_memalloc(sizeof(char) * i)))
+		if (!(tab[x] = (char *)ft_memalloc(sizeof(char) * i + 1)))
 			return (NULL);
 		ft_memset(tab[x], '.', i);
 	}
@@ -57,13 +57,13 @@ void	ft_tabdel(char **tab, size_t j)
 		while(i < j)
 		{
 			ft_strdel(&tab[i]);
-			//free(&tab[i]);
+			//free(tab[i]);
 			i++;
 		}
-		free(tab);
+		ft_memdel((void **)tab);
 	}
 }
-
+/*
 char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 {
 	int		i;
@@ -123,17 +123,28 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 	return (NULL);
 }
 
-char	**ft_algo(t_list *tetris)
+char	**ft_algo(t_list *tetris, int p)
 {
 	int		i;
 	char	**tab;
 
 	tab = NULL;
-	i = 2;
+	i = ft_sqrtp(p * 4);
 	while (!tab)
 	{
 		tab = ft_algor(ft_gensquare(i), tetris, i);
 		i++;
 	}
 	return (tab);
+}
+*/
+int main()
+{
+	char **tab;
+
+	while(1)
+	{
+		tab = ft_gensquare(700);
+		ft_tabdel(tab, 700);
+	}
 }

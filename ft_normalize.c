@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 22:45:40 by viforget          #+#    #+#             */
-/*   Updated: 2019/01/25 15:04:55 by viforget         ###   ########.fr       */
+/*   Updated: 2019/02/07 18:57:25 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,17 @@ char	**ft_up(char **tab)
 	return (tab);
 }
 
-t_list	*ft_normalize(t_list *tetris)
+int		ft_normalize(t_list *tetris)
 {
+	int c;
+
+	c = 0;
 	while (tetris)
 	{
+		c++;
 		ft_up(tetris->content);
 		ft_left(tetris->content);
 		tetris = tetris->next;
 	}
-	return (tetris);
+	return (c);
 }
