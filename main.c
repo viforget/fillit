@@ -6,11 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 23:59:05 by viforget          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/02/07 22:46:20 by viforget         ###   ########.fr       */
-=======
-/*   Updated: 2019/01/25 16:33:53 by medenis          ###   ########.fr       */
->>>>>>> d6b630213ee642c536d6e367c5145b6d95502ba9
+/*   Updated: 2019/02/08 22:10:29 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +39,7 @@ char	**tabnew(size_t x)
 	return (tab);
 }
 
-/*int		main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_list	*tetris;
 	t_list	*tetro;
@@ -75,13 +71,8 @@ char	**tabnew(size_t x)
 			return (0);
 		}
 		tetro = tetris;
-<<<<<<< HEAD
 		char **tet;
 		tet = ft_algo(tetris, nb);
 		ft_puttab(tet, ft_strlen(tet[0]));
-=======
-		tab = ft_algo(tetris);
-		ft_puttab(tab, ft_strlen(tab[0]));
->>>>>>> d6b630213ee642c536d6e367c5145b6d95502ba9
 	}
-}*/
+}
