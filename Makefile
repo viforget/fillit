@@ -6,7 +6,7 @@
 #    By: medenis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 18:28:47 by medenis           #+#    #+#              #
-#    Updated: 2019/02/04 22:25:26 by viforget         ###   ########.fr        #
+#    Updated: 2019/02/10 02:24:39 by viforget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = ft_normalize.c\
 		ft_paint.c\
 		ft_checkerror.c\
 		ft_algo.c\
+		ft_cleantab.c\
 
 OBJ = $(SRC:.c=.o)
 

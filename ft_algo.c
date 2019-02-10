@@ -6,7 +6,7 @@
 /*   By: viforget <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 02:24:17 by viforget          #+#    #+#             */
-/*   Updated: 2019/02/08 22:12:10 by viforget         ###   ########.fr       */
+/*   Updated: 2019/02/10 02:40:55 by viforget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ void	ft_tabdel(char **tab, size_t j)
 			//free(tab[i]);
 			i++;
 		}
-		ft_memdel((void **)tab);
+		ft_memdel((void **)&tab);
 	}
 }
 
-char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
+char	**ft_try(char **bsquare, char **tetro, size_t piece, int d, size_t p)
 {
 	size_t		i;
-	char	**bsquare;
+	char		c;
 
-	bsquare = ft_tabcopy(bsqa, p);
+	c = 'a';
 	i = 0;
 	while (i <= 12)
 	{
@@ -78,11 +78,12 @@ char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 			if (((i / 4 + d / p) < p) && ((i % 4 + d % p) < p) &&
 					bsquare[i / 4 + d / p][i % 4 + d % p] == '.')
 			{
+				c = tetro[i /4][i % 4];
 				bsquare[i / 4 + d / p][i % 4 + d % p] = tetro[i / 4][i % 4];
 			}
 			else
 			{
-				ft_tabdel(bsquare, p);
+				ft_cleantab(bsquare, p, c);
 				return (NULL);
 			}
 		}
@@ -91,7 +92,7 @@ char	**ft_try(char **bsqa, char **tetro, size_t piece, int d, size_t p)
 	return (bsquare);
 }
 
-char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
+char	**ft_algor(char **bsquare, t_list *tetris, size_t piece, char c)
 {
 	char	**tab;
 	char	**tab2;
@@ -103,7 +104,7 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 	while (i <= piece * (piece - 1))
 	{
 		tab2 = tab;
-		ft_tabdel(tab, piece);
+		ft_cleantab(bsquare, piece, c);
 		tab = ft_try(bsquare, tetris->content, tetris->content_size, i, piece);
 		i++;
 		if (tab == NULL)
@@ -112,7 +113,7 @@ char	**ft_algor(char **bsquare, t_list *tetris, size_t piece)
 		}
 		else if (tetris->next)
 		{
-			tab = ft_algor(tab, tetris->next, piece);
+			tab = ft_algor(tab, tetris->next, piece, c + 1);
 		}
 		if (tab)
 		{
@@ -132,7 +133,7 @@ char	**ft_algo(t_list *tetris, int p)
 	i = ft_sqrtp(p * 4);
 	while (!tab)
 	{
-		tab = ft_algor(ft_gensquare(i), tetris, i);
+		tab = ft_algor(ft_gensquare(i), tetris, i, 'A');
 		i++;
 	}
 	return (tab);
